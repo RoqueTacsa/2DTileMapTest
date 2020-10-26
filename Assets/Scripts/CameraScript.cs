@@ -5,16 +5,15 @@ using UnityEngine;
 public class CameraScript : MonoBehaviour
 {
 
-    public GameObject target;
+    public Transform player;
+    public Vector3 offset;
 
-    void Start()
+    void Update ()
     {
-        
-    }
-
-
-    void LateUpdate()
-    {
-        this.transform.position = new Vector3(target.transform.position.x, this.transform.position.y, this.transform.position.z);
+        transform.position = new Vector3 (player.position.x + offset.x, player.position.y + offset.y, offset.z);
+        if (Input.GetKey("escape"))
+        {
+            Application.Quit();
+        }
     }
 }
